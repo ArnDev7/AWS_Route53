@@ -4,9 +4,8 @@ from sqlalchemy.orm import sessionmaker
 
 import os
 
-# Create absolute path relative to this file to keep database path consistent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DB_PATH = os.path.join(BASE_DIR, "route53.db")
+DB_PATH = os.getenv("SQLITE_DB_PATH", os.path.join(BASE_DIR, "route53.db"))
 SQLALCHEMY_DATABASE_URL = f"sqlite:///{DB_PATH}"
 
 engine = create_engine(

@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 // Retrieve token from local storage
 export function getAuthToken(): string | null {
