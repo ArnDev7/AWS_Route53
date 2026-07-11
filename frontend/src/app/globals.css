@@ -1,0 +1,852 @@
+/* AWS Route53 Console Theme variables */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&display=swap');
+
+:root {
+  --aws-bg-body: #f1f3f4;
+  --aws-bg-card: #ffffff;
+  --aws-bg-nav: #16191f;
+  --aws-bg-sidebar: #ffffff;
+  --aws-bg-input: #ffffff;
+  
+  --aws-border-color: #eaeded;
+  --aws-border-color-dark: #d5dbdb;
+  --aws-border-active: #0972ec;
+  
+  --aws-text-primary: #16191f;
+  --aws-text-secondary: #545b64;
+  --aws-text-light: #ffffff;
+  --aws-text-link: #0972ec;
+  
+  --aws-blue-primary: #0972ec;
+  --aws-blue-hover: #035cc5;
+  --aws-orange-primary: #ec7211;
+  --aws-orange-hover: #d85d00;
+  
+  --aws-green: #1d8102;
+  --aws-green-bg: #edfae6;
+  --aws-red: #d13212;
+  --aws-red-bg: #fdf3f2;
+  --aws-yellow: #a98200;
+  --aws-yellow-bg: #fffbf0;
+  --aws-tab-hover-bg: #f7f9fa;
+  --aws-selected-bg: #edf6fd;
+  
+  --aws-font-family: "Open Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --aws-font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* Premium Dark Mode variables stylesheet overrides */
+.dark-mode {
+  --aws-bg-body: #0d0f12;
+  --aws-bg-card: #161b22;
+  --aws-bg-sidebar: #161b22;
+  --aws-bg-input: #0d0f12;
+  
+  --aws-border-color: #21262d;
+  --aws-border-color-dark: #30363d;
+  --aws-border-active: #58a6ff;
+  
+  --aws-text-primary: #c9d1d9;
+  --aws-text-secondary: #8b949e;
+  --aws-text-light: #f0f6fc;
+  --aws-text-link: #58a6ff;
+  
+  --aws-blue-primary: #58a6ff;
+  --aws-blue-hover: #1f6feb;
+  
+  --aws-green: #3fb950;
+  --aws-green-bg: #1f2e24;
+  --aws-red: #f85149;
+  --aws-red-bg: #3c1e1e;
+  --aws-yellow: #d29922;
+  --aws-yellow-bg: #3c321e;
+  --aws-tab-hover-bg: #21262d;
+  --aws-selected-bg: #1c2635;
+}
+
+
+/* Base resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--aws-font-family);
+  background-color: var(--aws-bg-body);
+  color: var(--aws-text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--aws-text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Top Navigation Bar */
+.aws-header {
+  background-color: var(--aws-bg-nav);
+  color: var(--aws-text-light);
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.aws-header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.aws-logo-text {
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: #ff9900;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.aws-logo-tag {
+  background-color: #35475e;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+}
+
+.aws-search-container {
+  position: relative;
+  width: 320px;
+}
+
+.aws-search-input {
+  width: 100%;
+  background-color: #2b303c;
+  border: 1px solid #414756;
+  border-radius: 4px;
+  padding: 6px 12px 6px 36px;
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.aws-search-input:focus {
+  border-color: var(--aws-blue-primary);
+  background-color: #353b4a;
+}
+
+.aws-header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.aws-header-icon-btn {
+  background: none;
+  border: none;
+  color: #aab7c4;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.aws-header-icon-btn:hover {
+  color: #ffffff;
+}
+
+.aws-user-profile {
+  font-size: 12px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.aws-user-profile:hover {
+  background-color: #2b303c;
+}
+
+/* Page Layout */
+.aws-container {
+  display: flex;
+  padding-top: 50px;
+  min-height: 100vh;
+}
+
+/* Sidebar Drawer */
+.aws-sidebar {
+  width: 250px;
+  background-color: var(--aws-bg-sidebar);
+  border-right: 1px solid var(--aws-border-color);
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  padding-top: 15px;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.aws-sidebar-title {
+  padding: 8px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--aws-text-primary);
+}
+
+.aws-sidebar-menu {
+  list-style: none;
+  margin-top: 8px;
+  padding: 0;
+}
+
+.aws-sidebar-item {
+  margin-bottom: 2px;
+}
+
+.aws-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 24px;
+  color: var(--aws-text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.aws-sidebar-link:hover {
+  background-color: #f7f9fa;
+  color: var(--aws-text-primary);
+  text-decoration: none;
+}
+
+.aws-sidebar-link.active {
+  background-color: #f2f8fd;
+  color: var(--aws-blue-primary);
+  border-left: 3px solid var(--aws-blue-primary);
+  padding-left: 21px; /* Maintain alignment */
+}
+
+/* Main Workspace */
+.aws-main {
+  flex: 1;
+  margin-left: 250px;
+  padding: 24px 32px;
+  overflow-x: auto;
+}
+
+/* Breadcrumbs */
+.aws-breadcrumbs {
+  font-size: 12px;
+  color: var(--aws-text-secondary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.aws-breadcrumb-separator {
+  color: #aab7c4;
+}
+
+/* Section Header */
+.aws-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.aws-page-title {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--aws-text-primary);
+}
+
+.aws-page-subtitle {
+  font-size: 14px;
+  color: var(--aws-text-secondary);
+  margin-top: 4px;
+}
+
+/* Buttons */
+.aws-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 2px;
+  font-family: var(--aws-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--aws-border-color-dark);
+  background-color: var(--aws-bg-card);
+  color: var(--aws-text-secondary);
+  transition: all 0.15s ease;
+  outline: none;
+  box-shadow: 0 1px 1px rgba(0, 28, 36, 0.08);
+}
+
+.aws-btn:hover {
+  background-color: var(--aws-tab-hover-bg);
+  color: var(--aws-text-primary);
+  border-color: var(--aws-border-color-dark);
+  box-shadow: 0 1px 3px rgba(0, 28, 36, 0.12);
+}
+
+.aws-btn:active {
+  box-shadow: inset 0 1px 2px rgba(0, 28, 36, 0.12);
+}
+
+.aws-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.aws-btn-primary {
+  background-color: var(--aws-orange-primary);
+  border-color: var(--aws-orange-primary);
+  color: #ffffff;
+}
+
+.aws-btn-primary:hover {
+  background-color: var(--aws-orange-hover);
+  border-color: var(--aws-orange-hover);
+  color: #ffffff;
+}
+
+.aws-btn-blue {
+  background-color: var(--aws-blue-primary);
+  border-color: var(--aws-blue-primary);
+  color: #ffffff;
+}
+
+.aws-btn-blue:hover {
+  background-color: var(--aws-blue-hover);
+  border-color: var(--aws-blue-hover);
+  color: #ffffff;
+}
+
+/* Card */
+.aws-card {
+  background-color: var(--aws-bg-card);
+  border: 1px solid var(--aws-border-color);
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 28, 36, 0.1), 0 1px 5px 0 rgba(0, 28, 36, 0.06);
+  margin-bottom: 24px;
+  transition: box-shadow 0.15s ease;
+}
+
+.aws-card-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--aws-border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aws-card-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.aws-card-body {
+  padding: 20px;
+}
+
+/* Compact Forms */
+.aws-form-group {
+  margin-bottom: 18px;
+}
+
+.aws-label {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--aws-text-primary);
+  margin-bottom: 6px;
+}
+
+.aws-label-desc {
+  font-size: 12px;
+  color: var(--aws-text-secondary);
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.aws-input, .aws-select, .aws-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: var(--aws-bg-input);
+  border: 1px solid var(--aws-border-color-dark);
+  border-radius: 4px;
+  color: var(--aws-text-primary);
+  font-family: var(--aws-font-family);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.aws-input:focus, .aws-select:focus, .aws-textarea:focus {
+  border-color: var(--aws-blue-primary);
+  box-shadow: 0 0 0 1px var(--aws-blue-primary);
+}
+
+.aws-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.aws-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.aws-radio-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.aws-radio-label input {
+  margin-top: 4px;
+}
+
+.aws-field-error {
+  color: var(--aws-red);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Table Controls */
+.aws-table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: var(--aws-bg-card);
+  border-bottom: 1px solid var(--aws-border-color);
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.aws-table-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aws-search-filter-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  max-width: 500px;
+}
+
+.aws-table-search {
+  position: relative;
+  flex: 1;
+}
+
+.aws-table-search-input {
+  width: 100%;
+  padding: 6px 12px 6px 32px;
+  font-size: 14px;
+  border: 1px solid var(--aws-border-color-dark);
+  border-radius: 4px;
+  outline: none;
+  background-color: var(--aws-bg-input);
+  color: var(--aws-text-primary);
+}
+
+.aws-table-search-input:focus {
+  border-color: var(--aws-blue-primary);
+}
+
+.aws-table-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--aws-text-secondary);
+}
+
+/* AWS Dense Table */
+.aws-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--aws-bg-card);
+}
+
+.aws-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.aws-table th {
+  background-color: var(--aws-bg-body);
+  color: var(--aws-text-secondary);
+  font-weight: 700;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--aws-border-color);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+}
+
+.aws-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--aws-border-color);
+  color: var(--aws-text-primary);
+  vertical-align: middle;
+}
+
+.aws-table tr:hover td {
+  background-color: var(--aws-tab-hover-bg);
+}
+
+.aws-table tr.selected td {
+  background-color: var(--aws-selected-bg) !important;
+}
+
+.aws-table-checkbox {
+  width: 36px;
+  text-align: center;
+  padding-right: 0 !important;
+}
+
+.aws-table-checkbox input {
+  cursor: pointer;
+}
+
+/* Badges */
+.aws-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 20px;
+  border: 1px solid transparent;
+}
+
+.aws-badge-public {
+  background-color: var(--aws-selected-bg);
+  color: var(--aws-blue-primary);
+  border: 1px solid var(--aws-border-color-dark);
+}
+
+.aws-badge-private {
+  background-color: var(--aws-tab-hover-bg);
+  color: var(--aws-text-secondary);
+  border: 1px solid var(--aws-border-color-dark);
+}
+
+.aws-badge-pill {
+  background-color: var(--aws-tab-hover-bg);
+  border: 1px solid var(--aws-border-color);
+  color: var(--aws-text-primary);
+  font-size: 11px;
+}
+
+.aws-badge-success {
+  background-color: var(--aws-green-bg);
+  border-color: var(--aws-green);
+  color: var(--aws-green);
+}
+
+.aws-badge-danger {
+  background-color: var(--aws-red-bg);
+  border-color: var(--aws-red);
+  color: var(--aws-red);
+}
+
+.aws-badge-warning {
+  background-color: var(--aws-yellow-bg);
+  border-color: var(--aws-yellow);
+  color: var(--aws-yellow);
+}
+
+.aws-badge-info {
+  background-color: var(--aws-tab-hover-bg);
+  border-color: var(--aws-blue-primary);
+  color: var(--aws-blue-primary);
+}
+
+/* Banner Alert Notifications */
+.aws-alert {
+  display: flex;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  border-left: 5px solid;
+  font-size: 14px;
+}
+
+.aws-alert-success {
+  background-color: var(--aws-green-bg);
+  border-color: var(--aws-green);
+  color: #1d7b02;
+}
+
+.aws-alert-danger {
+  background-color: var(--aws-red-bg);
+  border-color: var(--aws-red);
+  color: #c92f10;
+}
+
+.aws-alert-warning {
+  background-color: var(--aws-yellow-bg);
+  border-color: var(--aws-yellow);
+  color: #927000;
+}
+
+/* Blue informational tip banner — distinct from amber system/status banners */
+.aws-alert-info {
+  background-color: #f0f7ff;
+  border-color: var(--aws-blue-primary);
+  color: #0a3c6e;
+}
+
+.dark-mode .aws-alert-info {
+  background-color: #111d2e;
+  color: #a2ceff;
+}
+
+/* Pagination */
+.aws-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: var(--aws-bg-card);
+  border-top: 1px solid var(--aws-border-color);
+  font-size: 13px;
+  color: var(--aws-text-secondary);
+}
+
+.aws-pagination-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.aws-pagination-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--aws-border-color-dark);
+  background: var(--aws-bg-card);
+  color: var(--aws-text-primary);
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+.aws-pagination-btn:hover:not(:disabled) {
+  background-color: #f7f9fa;
+}
+
+.aws-pagination-btn:disabled {
+  color: #aab7c4;
+  cursor: not-allowed;
+}
+
+.aws-pagination-btn.active {
+  background-color: var(--aws-blue-primary);
+  color: white;
+  border-color: var(--aws-blue-primary);
+}
+
+/* Tabs */
+.aws-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--aws-border-color-dark);
+  margin-bottom: 20px;
+  list-style: none;
+}
+
+.aws-tab-item {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--aws-text-secondary);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  outline: none;
+  font-family: var(--aws-font-family);
+}
+
+.aws-tab-item:hover {
+  color: var(--aws-text-primary);
+}
+
+.aws-tab-item.active {
+  color: var(--aws-blue-primary);
+  border-bottom-color: var(--aws-blue-primary);
+}
+
+/* Side Drawer Modal Details */
+.aws-drawer {
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  right: 0;
+  width: 420px;
+  background-color: var(--aws-bg-card);
+  box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+  border-left: 1px solid var(--aws-border-color);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.aws-drawer.open {
+  transform: translateX(0);
+}
+
+.aws-drawer-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--aws-border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--aws-bg-body);
+}
+
+.aws-drawer-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.aws-drawer-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--aws-text-secondary);
+}
+
+.aws-drawer-close:hover {
+  color: var(--aws-text-primary);
+}
+
+.aws-drawer-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.aws-drawer-field {
+  margin-bottom: 16px;
+}
+
+.aws-drawer-label {
+  font-size: 12px;
+  color: var(--aws-text-secondary);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.aws-drawer-value {
+  font-size: 14px;
+  color: var(--aws-text-primary);
+  margin-top: 4px;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+/* Detail Subpanels Grid */
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Floating toasts container */
+.toasts-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10000;
+  max-width: 400px;
+}
+
+/* Modern AWS Login View */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1a1e24; /* Slate background */
+  font-family: var(--aws-font-family);
+}
+
+.login-card {
+  background: white;
+  border-radius: 4px;
+  width: 440px;
+  padding: 40px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  border-top: 4px solid var(--aws-orange-primary);
+}
+
+.login-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+  color: var(--aws-text-primary);
+}
+
+.login-subtitle {
+  font-size: 13px;
+  color: var(--aws-text-secondary);
+  text-align: center;
+  margin-bottom: 24px;
+}

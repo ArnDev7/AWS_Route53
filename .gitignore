@@ -1,0 +1,25 @@
+# Python
+.venv/
+venv/
+ENV/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# NextJS / NodeJS
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Databases
+backend/route53.db
+route53.db
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
+*.pem
